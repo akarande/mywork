@@ -1,0 +1,61 @@
+package linkedList;
+
+public class LinkedListImpl implements LinkedList {
+
+	@Override
+	public LinkedList add(Node node) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LinkedList addBefore(Node node, int position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LinkedList remove(Node node) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LinkedList removeAtPosition(int position)
+			throws IndexOutOfBoundsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LinkedList addFirst(Node node) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LinkedList reverse(Node head) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LinkedList recursiveReverse(Node head) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Node peek() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Node getNodeAtPosition(int position)
+			throws IndexOutOfBoundsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
