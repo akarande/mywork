@@ -1,7 +1,7 @@
-package linkedListTest;
+package linkedlisttest;
 
-import linkedList.LinkedListImpl;
-import linkedList.Node;
+import linkedlist.LinkedListImpl;
+import linkedlist.Node;
 
 import org.junit.Test;
 

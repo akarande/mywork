@@ -1,4 +1,4 @@
-package linkedList;
+package linkedlist;
 
 public interface LinkedList {
 
@@ -11,5 +11,7 @@ public interface LinkedList {
 	Node recursiveReverse(Node head);
 	int peek(Node head);
 	Node getNodeAtPosition(Node head, int position) throws IndexOutOfBoundsException;
+	Node sort(Node head);
+	int length(Node head);
 	
 }

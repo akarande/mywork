@@ -1,4 +1,4 @@
-package linkedList;
+package linkedlist;
 
 public class LinkedListImpl implements LinkedList {
 
@@ -133,6 +133,22 @@ public class LinkedListImpl implements LinkedList {
 		}
 		System.out.println("******************************");
 		System.out.println("\n");
+	}
+
+	@Override
+	public Node sort(Node head) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int length(Node head) {
+		int count = 0;
+		while(head != null) {
+			head = head.getNext();
+			count++;
+		}
+		return count;
 	}
 	
 }
