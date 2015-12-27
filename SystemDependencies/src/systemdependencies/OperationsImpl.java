@@ -1,6 +1,7 @@
 package systemdependencies;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,11 +15,15 @@ public class OperationsImpl implements Operations {
 		}
 		if(DependencyGraph.getDependencyMap().containsKey(supporter) && !currentList.contains(dependent)) {
 			//Check if the dependent already exists
-			currentList.add(dependent);
+			if(!currentList.contains(dependent)) {//Do not add same dependency
+				currentList.add(dependent);
+			}
 			DependencyGraph.getDependencyMap().put(supporter, currentList);
 		} else {
 			//currentList = new ArrayList<String>(temp);
-			currentList.add(dependent);
+			if(!currentList.contains(dependent)) {//Do not add same dependency
+				currentList.add(dependent);
+			}
 			DependencyGraph.getDependencyMap().put(supporter, currentList);
 		}
 		if(!ComponentsList.getComponentsList().containsKey(dependent)) {
@@ -37,14 +42,20 @@ public class OperationsImpl implements Operations {
 		List<String>dependencyList = dependencyMap.get(component);
 		Map<String, Boolean>compMap = ComponentsList.getComponentsList();
 		if(dependencyList != null) {//Check if the current component has any dependencies
-			for(String comp : dependencyList) {
-				if(!compMap.get(comp)) {
-					install(comp);
-					if(!compMap.get(comp)) {//Check before you install otherwise the component is already installed
-						compMap.put(comp, true);
-						System.out.println("Installing Component: " + comp);
+			Iterator<String>iterator = dependencyList.iterator();
+			while(iterator.hasNext()) {
+				String value = iterator.next();
+				if(!compMap.get(value)) {
+					install(value);
+					if(!compMap.get(value)) {//Check before you install otherwise the component is already installed
+						compMap.put(value, true);
+						System.out.println("Installing Component: " + value);
 					}
 				}
+			}
+			if(!iterator.hasNext() && !compMap.get(component)) {//If the loop ends and all dependencies are installed already, then just install the current component
+				compMap.put(component, true);
+				System.out.println("Installing Component: " + component);
 			}
 		} else {//No dependency found for current component so install it and return back, this is the base case.
 			if(compMap.get(component) == null || !compMap.get(component)) {

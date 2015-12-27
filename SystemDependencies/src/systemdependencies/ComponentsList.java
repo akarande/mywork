@@ -1,6 +1,6 @@
 package systemdependencies;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ComponentsList {
@@ -10,7 +10,7 @@ public class ComponentsList {
 	
 	public static Map<String, Boolean> getComponentsList() {
 		if(componentList == null) {
-			componentList = new HashMap<String, Boolean>();
+			componentList = new LinkedHashMap<String, Boolean>();
 		}
 		return componentList;
 	}

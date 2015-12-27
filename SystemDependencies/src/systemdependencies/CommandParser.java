@@ -37,7 +37,7 @@ public class CommandParser {
 		int currentLength = eachWord.length;
 		if(eachWord[0].equals("DEPEND")) {
 			for(int i = currentLength-1; i-1 > 0; i--) {
-				operation.depend(eachWord[i-1], eachWord[i]);
+				operation.depend(eachWord[i], eachWord[i-1]);
 			}
 		} else if(eachWord[0].equals("INSTALL")) {
 			operation.install(eachWord[1]);
