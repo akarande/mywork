@@ -1,7 +1,6 @@
 package strings;
 
 public class StringMethods {
-
 	public int subString(String str, String subStr) {
 		for(int i = 0; i < str.length(); i++) {
 			for(int j = 0; j < subStr.length();) {

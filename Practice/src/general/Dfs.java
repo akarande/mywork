@@ -1,7 +1,11 @@
 package general;
 
 import java.util.Arrays;
-
+/**
+ * DFS simple implementation using adjacency graph
+ * @author akarande
+ *
+ */
 public class Dfs {
 
 	boolean visited[];
@@ -33,7 +37,6 @@ public class Dfs {
 	}
 	
 	public static void main(String arg[]) {
-		
 		Dfs dfs = new Dfs();
 		dfs.init();
 		dfs.dfs(0);
