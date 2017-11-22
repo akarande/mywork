@@ -17,6 +17,9 @@ public class MaxSubarray {
 		return maxSoFar;
 	}
 	
+	/**
+	 * Uses Kadane's method
+	 */
 	int solve2(int arr[]) {
 		int maxSoFar = arr[0];
 		int maxEndingHere = arr[0];

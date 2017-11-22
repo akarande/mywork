@@ -35,6 +35,19 @@ public class BinaryTreeMethods {
 		return root;
 	}
 	
+	//Easier way
+	public BinaryNode addNodeRecursive(BinaryNode root, int value) {
+		BinaryNode newNode = new BinaryNode(value);
+		if(root == null) {
+			root = newNode;
+		} else if(root.getValue() > value) {
+			root.setLeft(addNodeRecursive(root.getLeft(), value));
+		} else {
+			root.setRight(addNodeRecursive(root.getRight(), value));
+		}
+		return root;
+	}
+	
 	public void inOrder(BinaryNode root) {
 		if(root == null) {
 			return;
