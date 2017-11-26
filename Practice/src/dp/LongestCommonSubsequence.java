@@ -48,8 +48,6 @@ public class LongestCommonSubsequence {
 		}
 	}
 	
-	
-	
 	public int lcs(String s1, String s2, int i, int j) {
 		if(i >= s1.length() || j >= s2.length()) {
 			return 0;
