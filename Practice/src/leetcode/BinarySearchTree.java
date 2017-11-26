@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinarySearchTree {
 
 	class TreeNode {
@@ -36,6 +39,27 @@ public class BinarySearchTree {
 		inorder(root.right);
 	}
 	
+	void levelOrderTraversal(TreeNode root) {
+		if(root == null) return;
+		List<TreeNode>queue = new ArrayList<>();
+		queue.add(root);
+		TreeNode curr = root;
+		int k = 0;
+		List<TreeNode>currQ = new ArrayList<>();
+		do {
+			currQ.clear();
+			while(k < queue.size()) {
+				curr = queue.get(k);
+				System.out.print(curr.val + "\t");
+				k++;
+				if(curr.left != null) currQ.add(curr.left);
+				if(curr.right != null) currQ.add(curr.right);
+			}
+			System.out.println();
+			queue.addAll(currQ);
+		} while(!currQ.isEmpty());
+	}
+	
 	
 	public static void main(String arg[]) {
 		TreeNode root = null;
@@ -46,7 +70,12 @@ public class BinarySearchTree {
 		root = bst.addNode(root, 8);
 		root = bst.addNode(root, 3);
 		root = bst.addNode(root, 1);
+		root = bst.addNode(root, 2);
+		root = bst.addNode(root, 5);
+		root = bst.addNode(root, 7);
 		bst.inorder(root);
 		System.out.println("MAX DEPTH: " + bst.maxDepth(root));
+		System.out.println("Level Order Traversal");
+		bst.levelOrderTraversal(root);
 	}
 }
