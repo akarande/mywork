@@ -1,6 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Substring {
 
@@ -75,6 +77,16 @@ public class Substring {
 	}
 	
 	
+	/**
+	 * Rabin-Karp uses hashing method for comparing two strings
+	 * It creates substrings of size == pattern.length() and calculates
+	 * the hash for it, if the hashes are same then it compares the actual values.
+	 * Complexity is O(m*n) where m is the length of string and n is the length of
+	 * the pattern.
+	 * @param str
+	 * @param pattern
+	 * @return
+	 */
 	//Rabin-Karp
 	public int substringRabinKarp(String str, String pattern) {
 		long patternHash = getHash(pattern);
@@ -121,6 +133,57 @@ public class Substring {
 		return true;
 	}
 	
+	void calculateZ(String str, int[] z) {
+		int left = 0;
+		int right = 0;
+		z[0] = 0;
+		for(int i = 1; i < str.length(); i++) {
+			if(i > right) {
+				left = right = i;
+				while(i < str.length() && str.charAt(right) == str.charAt(right - left)) {
+					right++;
+				}
+				z[i] = right - left;
+				right--;
+			} else {
+				int j = i - left;
+				if(z[j] < right - i + 1) {
+					z[i] = z[j]; 
+				} else {
+					left = i;
+					while(right < str.length() && str.charAt(right) == str.charAt(right - left)) {
+						right++;
+					}
+					z[i] = right - left;
+					right--;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Z algorithm for substring finding substring
+	 * Complexity O(m + n)
+	 * @param str
+	 * @param z
+	 */
+	public List<Integer> subsringZAlgo(String str, String pattern) {
+		int n = pattern.length();
+		int z[] = new int[str.length() + n + 1];
+		StringBuilder combinedString = new StringBuilder();
+		combinedString.append(pattern);
+		combinedString.append("$");
+		combinedString.append(str);
+		calculateZ(combinedString.toString(), z);
+		List<Integer>ans = new ArrayList<>();
+		for(int i = 0; i < z.length; i++) {
+			if(z[i] == n) {
+				ans.add(i - n - 1);
+			}
+		}
+		return ans;
+	}
+	
 	public static void main(String arg[]) {
 		String s1 = "abxabcdabcaby";
 		String s2 = "abcdabca";
@@ -128,5 +191,6 @@ public class Substring {
 		System.out.println("KMP Match found at " + ss.substringKMP(s1, s2));
 		System.out.println("REG Match found at " + ss.substring(s1, s2));
 		System.out.println("RBK Match found at " + ss.substringRabinKarp(s1, s2));
+		ss.subsringZAlgo(s1, s2).stream().forEach(e -> System.out.print(e + "\t"));
 	}
 }
