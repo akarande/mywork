@@ -169,6 +169,48 @@ public class BinarySearchTree {
 		}
 	}
 	
+	boolean isBST(TreeNode root, int minRange, int maxRange) {
+		if(root == null) return true;
+		if(root.val <= minRange && root.val > maxRange) return false;
+		return isBST(root.left, minRange, root.val) && isBST(root.right, root.val, maxRange);
+	}
+	
+	TreeNode minValue(TreeNode root) {
+		if(root == null) return root;
+		while(root.left != null) {
+			root = root.left;
+		}
+		return root;
+	}
+	
+	TreeNode deleteNode(TreeNode root, int val) {
+		if(root == null) return root;
+		else if(root.val > val) {
+			root.left = deleteNode(root.left, val);
+		} else if(root.val < val) {
+			root.right = deleteNode(root.right, val);
+		} else {
+			if(root.val == val) {
+				//Both children are null
+				if(root.left == null && root.right == null) {
+					root = null;
+				} else if(root.left == null && root.right != null) {
+					//Only left is null
+					root = root.right;
+				} else if(root.left != null && root.right == null) {
+					//Only right is null
+					root = root.left;
+				} else {
+					//Both left and right are not null, find inorder sucessor
+					TreeNode curr = minValue(root.right);
+					root.val = curr.val;
+					root.right = deleteNode(root.right, curr.val);
+				}
+			}
+		}
+		return root;
+	}
+	
 	public static void main(String arg[]) {
 		TreeNode root = null;
 		BinarySearchTree bst = new BinarySearchTree();
