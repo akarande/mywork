@@ -114,7 +114,6 @@ public class BinarySearchTree {
 		Stack<TreeNode>stack = new Stack<>();
 		List<TreeNode>traverse = new ArrayList<>();
 		stack.add(root);
-		curr = root;
 		while(!stack.isEmpty()) {
 			curr = stack.pop();
 			traverse.add(0, curr);
@@ -167,6 +166,39 @@ public class BinarySearchTree {
 				curr = curr.right;
 			}
 		}
+	}
+	
+	TreeNode search(TreeNode root, int val) {
+		if(root == null) return root;
+		if(root.val == val) return root;
+		else if(root.val > val) return search(root.left, val);
+		else return search(root.right, val);
+	}
+	
+	TreeNode inorderSuccessor(TreeNode root, int val) {
+		TreeNode curr = search(root, val);
+		//Node has right sub-tree
+		if(curr.right != null) {
+			TreeNode t = curr.right;
+			while(t.left != null) {
+				t = t.left;
+			}
+			return t;
+		} else {
+			//Node does not have right sub-tree
+			TreeNode successor = null;
+			TreeNode ancestor = root;
+			while(ancestor != curr) {
+				if(ancestor.val > curr.val) {
+					successor = ancestor;
+					ancestor = ancestor.left;
+				} else {
+					ancestor = ancestor.right;
+				}
+			}
+			return successor;
+		}
+		
 	}
 	
 	boolean isBST(TreeNode root, int minRange, int maxRange) {

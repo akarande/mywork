@@ -61,7 +61,7 @@ public class AVLTree {
 		int balance = root.left.height - root.right.height;
 		if(balance > 1) {
 			if(root.left.left.height >= root.left.right.height) { //LL Case
-				root = rightRotate(root.left);
+				root = rightRotate(root);
 			} else {	//LR Case
 				root.left = leftRotate(root.left);
 				return rightRotate(root);

@@ -74,41 +74,15 @@ public class Bfs {
 			currList.addAll(queue);
 			queue.clear();
 			for(int j = 0; j < currList.size(); j++) {
-				int val = currList.get(j);
-				if(distance[val] == -1) {
-					distance[val] = 1 + distance[i];
-					queue.addAll(adj.get(val));
+				int currElement = currList.get(j);
+				if(distance[currElement] == -1) {
+					distance[currElement] = 1 + distance[i];
+					queue.addAll(adj.get(currElement));
 				}
 			}
 			currList.clear();
 		}
 	}
-	
-	
-	// With adjacency list
-		void calculate4() {
-			for (int i = 0; i < adj.size(); i++) {
-				this.distance[i] = -1;
-			}
-			distance[0] = 0;
-			int n = adj.size();
-			List<Integer>queue = new ArrayList<>();
-			queue.addAll(adj.get(0));
-			int k = 0;
-			//Distance loop for all neighbors at distance i
-			for(int i = 0; i < n; i++) {
-				int q = queue.size();
-				for(int j = i + k; j < q; j++) {
-					int val = queue.get(j);
-					if(distance[val] == -1) {
-						distance[val] = 1 + distance[i];
-						queue.addAll(adj.get(val));
-						k++;
-					}
-				}
-			}
-		}
-	
 	
 	public static void main(String[] args) {
 		int[][] g = new int[][]{
@@ -129,7 +103,7 @@ public class Bfs {
 				arr.add(Arrays.asList(1, 4));
 		
 		Bfs bfs = new Bfs(g, arr);
-		bfs.calculate4();
+		bfs.calculate3();
 		for (int i = 0;i < g.length;i++) {
 			System.out.println(bfs.distance[i]);
 		}
