@@ -43,7 +43,7 @@ public class QuickSort {
 	
 	public static void main(String arg[]) {
 		QuickSort qs = new QuickSort();
-		int arr[] = {81, 73, 24, 62, 13, 8, 40, 29, 84};
+		int arr[] = {87, 56, 21, 53, 13, 31, 78, 2};//{81, 73, 24, 62, 13, 8, 40, 29, 84};
 		qs.partition(arr, 0, arr.length-1);
 		qs.printArray(arr);
 	}
