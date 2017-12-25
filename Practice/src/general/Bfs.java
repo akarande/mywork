@@ -64,7 +64,6 @@ public class Bfs {
 		for (int i = 0; i < adj.size(); i++) {
 			this.distance[i] = -1;
 		}
-		
 		distance[0] = 0;
 		int n = adj.size();
 		List<Integer> currList = new ArrayList<>();

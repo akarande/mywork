@@ -242,7 +242,7 @@ public class BinarySearchTree {
 		}
 		return root;
 	}
-	
+		
 	public static void main(String arg[]) {
 		TreeNode root = null;
 		BinarySearchTree bst = new BinarySearchTree();
