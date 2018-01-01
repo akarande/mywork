@@ -27,7 +27,7 @@ public class ReverseKGroup {
 		System.out.println();
 	}
 	
-	public ListNode reverseKGroup(ListNode head, int k) {
+	public ListNode reverseKGroup2(ListNode head, int k) {
         if(head == null || k == 0) return head;
         ListNode curr = head;
         ListNode prev = null;
@@ -58,6 +58,62 @@ public class ReverseKGroup {
 		}
 		return count;
 	}
+	
+	/**
+	 * Actual solution without swapping the values
+	 * @param head
+	 * @param k
+	 * @return
+	 */
+	public ListNode reverseKGroup(ListNode head, int k) {
+        if(head == null || head.next == null || k == 0) return head;
+        ListNode curr = head;
+        ListNode prev = null;
+        while(curr != null) {
+            ListNode begin = curr;	//Keep the beginning so that we know where to start the reversing process
+            int i = k;
+            while(i > 0 && curr != null) {	//Check if there are at-least k elements to reverse
+                curr = curr.next;
+                i--;
+            }
+            if(i == 0) {	//If there are k elements reverse them
+                ListNode reversedList = reverse(begin, k);
+                if(prev == null) prev = reversedList;	//check if this is the first k elements reversed
+                else {	//If not iterate to the end of reversed list and attach the next of current list to the newly reversed list
+                    ListNode newList = prev;
+                    while(newList.next != null) newList = newList.next;
+                    newList.next = reversedList;
+                }
+            } else {	//There were elements less than k so we did not reverse them
+                if(prev != null) {	//Check if these were starting elements, if not iterate till the end and then append the un-reversed elements since the remaining elements didn't reach to size k
+                    ListNode newList = prev;
+                    while(newList.next != null) {
+                        newList = newList.next;
+                    }
+                    newList.next = begin;
+                } else {	//actual list was smaller than the given k, just return the original list
+                    return head;
+                }
+            }
+        }
+        head = prev;
+        return head;
+    }
+    
+    ListNode reverse(ListNode root, int count) {
+        ListNode prev = null;
+        ListNode next = null;
+        ListNode curr = root;
+        while(count > 0 && curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            count--;
+        }
+        return prev;
+    }
+	
 	
 	public static void main(String arg[]) {
 		ReverseKGroup rkg = new ReverseKGroup();

@@ -23,9 +23,11 @@ public class ReverseLinkedListII {
 	}
 	
 	public ListNode reverseBetween(ListNode head, int m, int n) {
+        if(head == null || head.next == null || m == n) return head;
         int i = 1;
         ListNode curr = head;
-        ListNode begin = curr;
+        ListNode begin = null;
+        //Note the condition < is better because you are one node before the actual node to be reversed i.e. curr will be the next node to be reversed.
         while(curr != null && i < m) {
             begin = curr;
             curr = curr.next;
@@ -35,15 +37,19 @@ public class ReverseLinkedListII {
         ListNode next = null;
         ListNode prev = null;
         i = m-1;
-        while(i <= n && curr != null) {
+        while(i < n && curr != null) {
             next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
             i++;
         }
-        while(begin.next != null) begin = begin.next;
-        begin.next = next;
+        //If begin is null it means that the list is reversed from the first element and has no previous elements
+        if(begin != null) begin.next = prev;
+        else head = prev;
+        //We need to append the elements in the end that are not reversed and since previous is the new head we need to traverse through previous till we hit end of the list.
+        while(prev.next != null) prev = prev.next;
+        prev.next = curr;
         return head;
     }
 	
