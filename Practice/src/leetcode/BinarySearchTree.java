@@ -203,7 +203,7 @@ public class BinarySearchTree {
 	
 	boolean isBST(TreeNode root, int minRange, int maxRange) {
 		if(root == null) return true;
-		if(root.val <= minRange && root.val > maxRange) return false;
+		if(root.val <= minRange || root.val > maxRange) return false;
 		return isBST(root.left, minRange, root.val) && isBST(root.right, root.val, maxRange);
 	}
 	

@@ -26,9 +26,9 @@ public class Bfs {
 		
 		//Distance Loop all neighbors at distance i
 		for (int i = 1;i <= n;i++) {
-			//Neighbor loop for each jth node find the neigbor of distance i
+			//Neighbor loop for each jth node find the neighbor of distance i
 			for (int j = 0;j < n;j++) {
-				if (distance[j] == i - 1) {
+				if (distance[j] == i - 1) {//Makes sure that j is at i-1th level froom i
 					//Each neighbor of j at distance i-1 that are not visited before
 					for (int k = 0;k < n;k++) {
 						if (g[j][k] == 1 && distance[k] == -1) {

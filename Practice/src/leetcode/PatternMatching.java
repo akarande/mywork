@@ -11,7 +11,7 @@ public class PatternMatching {
 			Arrays.fill(dp[i], false);
 		}
 		dp[0][0] = true;
-		for(int i = 1; i < n+1; i++) {
+		for(int i = 1; i <= n; i++) {
 			if(pattern.charAt(i-1) == '*') dp[0][i] = dp[0][i-1];
 		}
 		

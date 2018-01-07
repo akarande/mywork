@@ -76,9 +76,9 @@ public class ReorderList {
     	head = rl.add(head, 1);
     	head = rl.add(head, 2);
     	head = rl.add(head, 3);
-    	/*head = rl.add(head, 4);
+    	head = rl.add(head, 4);
     	head = rl.add(head, 5);
-    	head = rl.add(head, 6);*/
+    	head = rl.add(head, 6);
     	rl.printList(head);
     	System.out.println();
     	rl.reorderList(head);
