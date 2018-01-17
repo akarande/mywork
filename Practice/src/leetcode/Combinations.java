@@ -48,7 +48,7 @@ public class Combinations {
     	int n = 4, k = 2;
     	//cb.combine(n, k).stream().forEach(e -> System.out.print(e.toString() + " "));
     	int nums[] = {1,2,5};
-    	int target = 5;
+    	int target = 7;
     	List<List<Integer>>lst = cb.coinCombination(nums, target);
     	for(List<Integer>l : lst) {
     		System.out.println(l);

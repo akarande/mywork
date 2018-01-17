@@ -15,7 +15,7 @@ public class CoinPermutations {
 	
 	//Table method Complexity O(m*n)
 	int solve(int n) {
-		int memo[] = new int[coins.length + 1];
+		int memo[] = new int[n + 1];
 		Arrays.fill(memo, 0);
 		memo[0] = 1;
 		for(int i = 0; i < coins.length; i++) {
@@ -28,7 +28,7 @@ public class CoinPermutations {
 	
 	public static void main(String arg[]) {
 		CoinPermutations cp = new CoinPermutations();
-		System.out.println(cp.solve(5, 0));
-		System.out.println(cp.solve(5));
+		System.out.println(cp.solve(7, 0));
+		System.out.println(cp.solve(7));
 	}
 }
