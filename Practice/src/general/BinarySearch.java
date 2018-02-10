@@ -56,7 +56,7 @@ public class BinarySearch {
 	public static void main(String arg[]) {
 		BinarySearch bs = new BinarySearch();
 		int arr[] = {12, 19, 25, 34, 46, 56, 64, 71, 87, 89, 91};
-		int val = 25;
+		int val = 31;
 		/*System.out.println(bs.binarySearch(arr, 0, arr.length-1, val));
 		System.out.println(bs.searchIterative(arr, val));*/
 		System.out.println(bs.modifiedBinarySearch(arr, val));

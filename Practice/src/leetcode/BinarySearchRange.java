@@ -32,7 +32,7 @@ public class BinarySearchRange {
     
     public static void main(String arg[]) {
     	BinarySearchRange bsr = new BinarySearchRange();
-    	int[] nums = {5,7,7,8,8,10};
+    	int[] nums = {5,7,7,8,8,8,10};
     	int target = 8;
     	int[] res = bsr.searchRange(nums, target);
     	System.out.println(res[0] + ", " + res[1]);
