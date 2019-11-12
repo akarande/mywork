@@ -1,0 +1,5 @@
+com/my/resource/PingResource.class
+com/my/resource/UserResource.class
+com/my/annotations/ResourceAnnotations.class
+com/my/modules/ResourceConfigModule.class
+com/my/server/Main.class
